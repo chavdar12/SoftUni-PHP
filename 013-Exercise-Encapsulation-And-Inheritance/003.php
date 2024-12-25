@@ -47,7 +47,7 @@ class Book
     {
         if (strlen($title) >= 3) {
             $this->title = $title;
-        }else{
+        } else {
             throw new Exception("Title not valid!");
         }
     }
@@ -67,18 +67,25 @@ class Book
     protected function setAuthor(string $author): void
     {
         $author_names = explode(" ", $author);
-        if(count($author_names) < 2) {
+        if (count($author_names) < 2) {
             throw new Exception("Author not valid!");
-        }else{
+        } else {
             if (preg_match("/^[A-Za-z]+$/", $author_names[1])) {
                 $this->author = $author;
-            }else {
+            } else {
                 throw new Exception("Author not valid!");
 
             }
         }
     }
 
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return "OK\n" . $this->getPrice() . PHP_EOL;
+    }
 
     /**
      * @return float
@@ -94,19 +101,11 @@ class Book
      */
     protected function setPrice(float $price): void
     {
-        if ($price <=0){
+        if ($price <= 0) {
             throw new Exception("Price not valid!");
-        }else {
+        } else {
             $this->price = $price;
         }
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return "OK\n" . $this->getPrice().PHP_EOL;
     }
 }
 
@@ -139,20 +138,20 @@ $bookTitle = readline();
 $bookPrice = readline();
 $bookType = readline();
 
-if ($bookType === "STANDARD"){
+if ($bookType === "STANDARD") {
     try {
         $book = new Book($bookTitle, $bookAuthor, $bookPrice);
         echo $book;
-    }catch (Exception $e){
+    } catch (Exception $e) {
         echo $e->getMessage();
     }
-}else if ($bookType === "GOLD"){
+} else if ($bookType === "GOLD") {
     try {
         $goldBook = new GoldenEditionBook($bookTitle, $bookAuthor, $bookPrice);
         echo $goldBook;
-    }catch (Exception $e){
+    } catch (Exception $e) {
         echo $e->getMessage();
     }
-}else{
+} else {
     echo "Type is not valid!";
 }

@@ -1,6 +1,6 @@
 <?php
 
-use \App\Data\UserDTO;
+use App\Data\UserDTO;
 
 class UserService implements UserServiceInterface
 {
@@ -18,11 +18,11 @@ class UserService implements UserServiceInterface
 
     public function register(UserDTO $userDTO, string $confirmPassword): bool
     {
-        if ($userDTO->getPassword() !== $confirmPassword){
+        if ($userDTO->getPassword() !== $confirmPassword) {
             return false;
         }
 
-        if (null !== $this->userRepository->fundByUsername($userDTO->getUsername())){
+        if (null !== $this->userRepository->fundByUsername($userDTO->getUsername())) {
             return false;
         }
 

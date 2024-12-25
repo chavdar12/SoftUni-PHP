@@ -7,7 +7,6 @@ function createCategory(PDO $db, string $name)
 }
 
 
-
 function getQuestionsByCategoryId(PDO $db, int $categoryId): array
 {
     $query = "

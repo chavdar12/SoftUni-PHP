@@ -98,7 +98,6 @@ class UserService implements UserServiceInterface
         }
 
 
-
         $filePath = 'public/images/' . uniqid('profile_') . '.' . explode("/", $type)[1];
 
         if (!move_uploaded_file(

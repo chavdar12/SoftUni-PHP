@@ -1,27 +1,17 @@
 <?php
+$arr = explode(' ', readline());
+$found = false;
 
-$arr = [];
-$input_num = [];
-$input_num = explode(' ', readline());
-
-for ($i=0;$i<count($input_num); $i++){
-    $arr[$i] = $input_num[$i];
-}
-
-$flag = false;
-
-for ($i=0; $i<count($arr); $i++){
-    for ($j=$i+1;$j<count($arr); $j++){
-        for ($k = 0; $k<count($arr); $k++){
-            if ($arr[$i] + $arr[$j] == $arr[$k]){
-                echo $arr[$i]." + ".$arr[$j]." == ".$arr[$k].PHP_EOL;
-                $flag = true;
-                break;
-            }
+foreach ($arr as $i => $x) {
+    foreach ($arr as $j => $y) {
+        if ($i != $j && in_array($x . $y, $arr)) {
+            echo "$x + $y == " . ($x . $y) . PHP_EOL;
+            $found = true;
+            break 2;
         }
     }
 }
 
-if (!$flag){
-   echo "No";
+if (!$found) {
+    echo "No";
 }

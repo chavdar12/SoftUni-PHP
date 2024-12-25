@@ -1,6 +1,7 @@
 <?php
 
-function DoF(string $day){
+function DoF(string $day): string
+{
     $week = [
         "Monday",
         "Tuesday",
@@ -10,12 +11,8 @@ function DoF(string $day){
         "Saturday",
         "Sunday"
     ];
-    for ($i=0;$i<count($week);$i++) {
-        if ($week[$i] === $day) {
-            return $i + 1;
-        }
-    }
-        return "Invalid day!";
+    $dayIndex = array_search($day, $week);
+    return $dayIndex !== false ? $dayIndex + 1 : "Invalid day!";
 }
 
 echo DoF(readline());

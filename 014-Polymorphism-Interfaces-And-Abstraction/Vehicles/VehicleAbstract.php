@@ -1,4 +1,5 @@
 <?php
+
 namespace Vehicles;
 
 abstract class VehicleAbstract implements VehicleInterface
@@ -25,36 +26,35 @@ abstract class VehicleAbstract implements VehicleInterface
 
     public function drive(float $distance): string
     {
-        if($this->fuelQuantity <=0 ){
+        if ($this->fuelQuantity <= 0) {
             return "Fuel must be a positive number\n";
         }
 
-        if ($this->fuelQuantity >= $this->fuelConsumption * $this->modifier * $distance){
+        if ($this->fuelQuantity >= $this->fuelConsumption * $this->modifier * $distance) {
             $this->fuelQuantity -= $this->fuelConsumption * $this->modifier * $distance;
-            return basename(get_class($this)). " travelled " . $distance . " km" . PHP_EOL;
+            return basename(get_class($this)) . " travelled " . $distance . " km" . PHP_EOL;
         }
-        return  basename(get_class($this)). " needs refueling" . PHP_EOL;
+        return basename(get_class($this)) . " needs refueling" . PHP_EOL;
     }
 
     public function driveempty(float $distance): string
     {
-        if($this->fuelQuantity <=0 ){
+        if ($this->fuelQuantity <= 0) {
             return "Fuel must be a positive number\n";
         }
 
-        if ($this->fuelQuantity >= $this->fuelConsumption * $distance){
+        if ($this->fuelQuantity >= $this->fuelConsumption * $distance) {
             $this->fuelQuantity -= $this->fuelConsumption * $distance;
-            return basename(get_class($this)). " travelled " . $distance . " km" . PHP_EOL;
+            return basename(get_class($this)) . " travelled " . $distance . " km" . PHP_EOL;
         }
-        return  basename(get_class($this)). " needs refueling" . PHP_EOL;
+        return basename(get_class($this)) . " needs refueling" . PHP_EOL;
     }
 
     public function refuel(float $litres): void
     {
         if ($this->fuelQuantity + $litres <= $this->tankCap) {
             $this->fuelQuantity += $litres;
-        }
-        else {
+        } else {
             echo "Cannot fit fuel in tank\n";
         }
     }

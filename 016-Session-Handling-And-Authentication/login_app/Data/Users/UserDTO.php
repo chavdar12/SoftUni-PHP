@@ -1,4 +1,5 @@
 <?php
+
 namespace Data\Users;
 
 class UserDTO
@@ -109,8 +110,6 @@ class UserDTO
     {
         $this->profilePictureUrl = $profilePictureUrl;
     }
-
-
 
 
 }

@@ -39,7 +39,7 @@ class Person
     {
         if (strlen($name) >= 3) {
             $this->name = $name;
-        }else{
+        } else {
             throw new Exception("Name's length should not be less than 3 symbols!");
         }
     }
@@ -58,9 +58,9 @@ class Person
      */
     protected function setAge($age): void
     {
-        if($age > 0) {
+        if ($age > 0) {
             $this->age = $age;
-        }else{
+        } else {
             throw new Exception("Age must be positive!");
         }
     }
@@ -71,20 +71,20 @@ class Child extends Person
 {
     public function __construct($name, $age)
     {
-        if ($age > 15){
+        if ($age > 15) {
             throw new Exception("Child's age must be less than 16!");
-        }else{
-            parent::__construct($name,$age);
+        } else {
+            parent::__construct($name, $age);
         }
     }
 }
 
 // MAIN
 try {
-    $person = new Person("Ivan",40);
+    $person = new Person("Ivan", 40);
     $child = new Child("Ivancho", 10);
-    var_dump($person,$child);
-}catch (Exception $e){
+    var_dump($person, $child);
+} catch (Exception $e) {
     echo $e->getMessage();
 }
 

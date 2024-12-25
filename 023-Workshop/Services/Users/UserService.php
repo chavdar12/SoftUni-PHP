@@ -3,14 +3,11 @@
 namespace Services\Users;
 
 
-use Data\Users\UserEditDTO;
-use Exception\User\EditProfileException;
-use Exception\User\RegistrationException;
-use Exception\User\UploadException;
-use Repository\Users\UserRepositoryInterface;
-use Services\Encryption\EncryptionServiceInterface;
 use DTO\RequestModels\UserRegisterBindingModel;
 use DTO\UserDTO;
+use Exception\User\RegistrationException;
+use Repository\Users\UserRepositoryInterface;
+use Services\Encryption\EncryptionServiceInterface;
 
 
 class UserService implements UserServiceInterface

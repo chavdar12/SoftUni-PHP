@@ -1,15 +1,9 @@
 <?php
+
 class DecimalNumber
 {
-    /**
-     * @var string
-     */
-    private $value;
+    private string $value;
 
-    /**
-     * DecimalNumber constructor.
-     * @param string $value
-     */
     public function __construct(string $value)
     {
         $this->value = $value;
@@ -17,13 +11,8 @@ class DecimalNumber
 
     public function printReversed(): void
     {
-        for ($i = strlen($this->value) -1; $i >= 0; $i--)
-        {
-            echo $this->value[$i];
-        }
-        echo PHP_EOL;
+        echo strrev($this->value) . PHP_EOL;
     }
-
 }
 
 $num = new DecimalNumber(readline());

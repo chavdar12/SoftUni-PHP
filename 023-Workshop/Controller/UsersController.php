@@ -5,7 +5,6 @@ namespace Controller;
 
 
 use DTO\RequestModels\UserRegisterBindingModel;
-use DTO\ViewModels\UserLoginViewModel;
 use DTO\ViewModels\UserProfileViewModel;
 use Services\Users\UserServiceInterface;
 use ViewEngine\ViewInterface;
@@ -27,16 +26,12 @@ class UsersController
 
     public function loginProcess(UserServiceInterface $userService, UserRegisterBindingModel $model)
     {
-        if ($userService->verifyCredentials($model->getUsername(), $model->getPassword())){
+        if ($userService->verifyCredentials($model->getUsername(), $model->getPassword())) {
             $_SESSION['id'] = $userService->findByUsername($model->getUsername())->getId();
             header("Location: profile");
             exit;
 
         }
-    }
-    public function register()
-    {
-        $this->view->render();
     }
 
     public function registerProcess(UserRegisterBindingModel $bindingModel, UserServiceInterface $userService)
@@ -44,6 +39,11 @@ class UsersController
         $userService->register($bindingModel);
         header("Location: login");
         exit;
+    }
+
+    public function register()
+    {
+        $this->view->render();
     }
 
     public function profile(UserServiceInterface $userService)

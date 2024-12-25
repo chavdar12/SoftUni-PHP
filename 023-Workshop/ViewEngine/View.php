@@ -4,7 +4,6 @@
 namespace ViewEngine;
 
 
-use Core\MvcContext;
 use Core\MvcContextInterface;
 
 class View implements ViewInterface
@@ -23,10 +22,10 @@ class View implements ViewInterface
 
     public function render($model = null, $viewName = null)
     {
-        if ($viewName != null){
-            if (strstr($viewName, '.')){
+        if ($viewName != null) {
+            if (strstr($viewName, '.')) {
                 include self::VIEW_FOLDER . $viewName;
-            }else {
+            } else {
                 include self::VIEW_FOLDER . $viewName . self::VIEW_EXTENSION;
             }
         } else {

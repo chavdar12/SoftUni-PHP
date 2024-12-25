@@ -19,8 +19,8 @@ class UserService implements UserServiceInterface
      */
     private $encryptionService;
 
-    public function __construct(UserRepositoryInterface $userRepository,
-            EncryptionServiceInterface $encryptionService)
+    public function __construct(UserRepositoryInterface    $userRepository,
+                                EncryptionServiceInterface $encryptionService)
     {
         $this->userRepository = $userRepository;
         $this->encryptionService = $encryptionService;
@@ -28,11 +28,11 @@ class UserService implements UserServiceInterface
 
     public function register(UserDTO $userDTO, string $confirmPassword): bool
     {
-        if($userDTO->getPassword() !== $confirmPassword){
+        if ($userDTO->getPassword() !== $confirmPassword) {
             return false;
         }
 
-        if(null !== $this->userRepository->findOneByUsername($userDTO->getUsername())){
+        if (null !== $this->userRepository->findOneByUsername($userDTO->getUsername())) {
             return false;
         }
 
@@ -40,36 +40,46 @@ class UserService implements UserServiceInterface
         return $this->userRepository->insert($userDTO);
     }
 
+    /**
+     * @param UserDTO $userDTO
+     */
+    private function encryptPassword(UserDTO $userDTO): void
+    {
+        $plainPassword = $userDTO->getPassword();
+        $passwordHash = $this->encryptionService->hash($plainPassword);
+        $userDTO->setPassword($passwordHash);
+    }
+
     public function login(string $username, string $password): ?UserDTO
     {
         $userFromDB = $this->userRepository->findOneByUsername($username);
 
-        if(null === $userFromDB){
+        if (null === $userFromDB) {
             return null;
         }
 
-        if(false === $this->encryptionService->verify($password, $userFromDB->getPassword())){
+        if (false === $this->encryptionService->verify($password, $userFromDB->getPassword())) {
             return null;
         }
 
         return $userFromDB;
     }
 
+    public function isLogged(): bool
+    {
+        if (!$this->currentUser()) {
+            return false;
+        }
+        return true;
+    }
+
     public function currentUser(): ?UserDTO
     {
-        if(!$_SESSION['id']){
+        if (!$_SESSION['id']) {
             return null;
         }
 
         return $this->userRepository->findOneById(intval($_SESSION['id']));
-    }
-
-    public function isLogged(): bool
-    {
-        if(!$this->currentUser()){
-            return false;
-        }
-        return true;
     }
 
     public function edit(UserDTO $userDTO): bool
@@ -77,13 +87,13 @@ class UserService implements UserServiceInterface
         /** @var $currentUser UserDTO */
         $currentUser = $this->currentUser();
         $currentUserUserNameChanged = false;
-        if(null !== $currentUser){
+        if (null !== $currentUser) {
             $currentUser->getUsername() !== $userDTO->getUsername() ? $currentUserUserNameChanged = true : $currentUserUserNameChanged = false;
-        } else{
+        } else {
             return false;
         }
 
-        if( $currentUserUserNameChanged && (null !== $this->userRepository->findOneByUsername($userDTO->getUsername())) ){
+        if ($currentUserUserNameChanged && (null !== $this->userRepository->findOneByUsername($userDTO->getUsername()))) {
             return false;
         }
 
@@ -96,16 +106,6 @@ class UserService implements UserServiceInterface
      */
     public function getAll(): \Generator
     {
-       return $this->userRepository->findAll();
-    }
-
-    /**
-     * @param UserDTO $userDTO
-     */
-    private function encryptPassword(UserDTO $userDTO): void
-    {
-        $plainPassword = $userDTO->getPassword();
-        $passwordHash = $this->encryptionService->hash($plainPassword);
-        $userDTO->setPassword($passwordHash);
+        return $this->userRepository->findAll();
     }
 }

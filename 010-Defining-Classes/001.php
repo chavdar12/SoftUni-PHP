@@ -1,62 +1,39 @@
 <?php
 
-//Getters and Setters
+class Person
+{
+    private string $name;
+    private int $age;
+    private string $email;
 
-class Person{
-    private $name;
-    private $age;
-    private $email;
-
-
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     * @return Person
-     */
-    public function setName(string $name): Person
+    public function setName(string $name): self
     {
         $this->name = $name;
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getAge(): int
     {
         return $this->age;
     }
 
-    /**
-     * @param int $age
-     * @return Person
-     */
-    public function setAge(int $age): Person
+    public function setAge(int $age): self
     {
         $this->age = $age;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getEmail(): string
     {
         return $this->email;
     }
 
-    /**
-     * @param string $email
-     * @return Person
-     */
-    public function setEmail(string $email): Person
+    public function setEmail(string $email): self
     {
         $this->email = $email;
         return $this;
@@ -65,6 +42,6 @@ class Person{
 
 $person = new Person();
 $person->setName("Pesho")
-                ->setAge(30);
+    ->setAge(30);
 
 echo $person->getName() . " " . $person->getAge();

@@ -1,4 +1,5 @@
 <?php
+
 namespace Database;
 
 class DatabaseStatement implements DatabaseStatementInterface

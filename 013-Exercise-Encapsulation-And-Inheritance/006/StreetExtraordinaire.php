@@ -21,14 +21,6 @@ class StreetExtraordinaire extends Cat
     }
 
     /**
-     * @return int
-     */
-    public function getDecibelsOfMeows(): int
-    {
-        return $this->decibelsOfMeows;
-    }
-
-    /**
      * @param int $decibelsOfMeows
      */
     private function setDecibelsOfMeows(int $decibelsOfMeows): void
@@ -38,6 +30,14 @@ class StreetExtraordinaire extends Cat
 
     public function __toString(): string
     {
-        return parent::__toString(). " " . $this->getDecibelsOfMeows() . PHP_EOL;
+        return parent::__toString() . " " . $this->getDecibelsOfMeows() . PHP_EOL;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDecibelsOfMeows(): int
+    {
+        return $this->decibelsOfMeows;
     }
 }

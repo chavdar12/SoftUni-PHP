@@ -1,7 +1,5 @@
 <?php
-$arr = [];
-$arr = explode(" ",readline());
-
-for ($i=0; $i<count($arr); $i++){
-    echo $arr[$i]." => ".round($arr[$i], 0,PHP_ROUND_HALF_UP).PHP_EOL;
+$arr = explode(" ", readline());
+foreach ($arr as $value) {
+    echo "$value => " . round($value, 0, PHP_ROUND_HALF_UP) . PHP_EOL;
 }

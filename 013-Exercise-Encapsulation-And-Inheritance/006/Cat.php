@@ -24,27 +24,11 @@ abstract class Cat
     }
 
     /**
-     * @return string
-     */
-    public function getBreed(): string
-    {
-        return $this->breed;
-    }
-
-    /**
      * @param string $breed
      */
     private function setBreed(string $breed): void
     {
         $this->breed = $breed;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
     }
 
     /**
@@ -58,6 +42,22 @@ abstract class Cat
     public function __toString(): string
     {
         return $this->getBreed() . " " . $this->getName();
+    }
+
+    /**
+     * @return string
+     */
+    public function getBreed(): string
+    {
+        return $this->breed;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
     }
 
 }

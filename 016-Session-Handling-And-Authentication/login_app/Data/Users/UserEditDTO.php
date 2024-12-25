@@ -1,4 +1,5 @@
 <?php
+
 namespace Data\Users;
 
 class UserEditDTO
@@ -89,8 +90,6 @@ class UserEditDTO
     {
         $this->newPassword = $newPassword;
     }
-
-
 
 
 }

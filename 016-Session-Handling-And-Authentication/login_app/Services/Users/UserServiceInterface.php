@@ -13,8 +13,8 @@ interface UserServiceInterface
 {
     /**
      * @param UserDTO $userDTO
-     * @throws RegistrationException
      * @return mixed
+     * @throws RegistrationException
      */
     public function register(UserDTO $userDTO);
 
@@ -36,8 +36,8 @@ interface UserServiceInterface
      * @param string $tempName
      * @param string $type
      * @param int $size
-     * @throws UploadException
      * @return mixed
+     * @throws UploadException
      */
     public function setProfilePicture(int $id, string $tempName, string $type, int $size);
 }

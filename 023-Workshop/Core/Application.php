@@ -4,7 +4,6 @@
 namespace Core;
 
 
-use Routing\Router;
 use Routing\RouterInterface;
 
 class Application
@@ -32,15 +31,15 @@ class Application
         $this->resolvedDependencies[get_class($mvcContext)] = $mvcContext;
     }
 
-    public function registerDependency(string $abstraction, string $implementation)
-    {
-        $this->dependencies[$abstraction] = $implementation;
-    }
-
     public function addbean(string $className, $object)
     {
         $this->registerDependency($className, get_class($object));
         $this->resolvedDependencies[$className] = $object;
+    }
+
+    public function registerDependency(string $abstraction, string $implementation)
+    {
+        $this->dependencies[$abstraction] = $implementation;
     }
 
     public function start()
@@ -65,7 +64,7 @@ class Application
 
         $paramsInfo = $methodInfo->getParameters();
 
-        for ($i = $paramCount; $i < count($paramsInfo); $i++){
+        for ($i = $paramCount; $i < count($paramsInfo); $i++) {
             $param = $paramsInfo[$i];
             $paramInterface = $param->getClass();
             $paramInterfaceName = $paramInterface->getName();
@@ -102,23 +101,23 @@ class Application
         $params = $ctor->getParameters();
         $getParams = $this->mvcContext->getParams();
         $resolvedParams = [];
-        for($i = 0; $i < count($params); $i++){
-           $parameter = $params[$i];
-           $dependencyInterface = $parameter->getClass();
-           if (key_exists($dependencyInterface->getName(), $this->resolvedDependencies)){
-               $resolvedParams[] = $this->resolvedDependencies[$dependencyInterface->getName()];
-           }else {
-               $dependencyClass = $this->dependencies[$dependencyInterface->getName()];
-               $dependencyInstance = $this->resolve($dependencyClass);
-               $resolvedParams[] = $dependencyInstance;
-           }
+        for ($i = 0; $i < count($params); $i++) {
+            $parameter = $params[$i];
+            $dependencyInterface = $parameter->getClass();
+            if (key_exists($dependencyInterface->getName(), $this->resolvedDependencies)) {
+                $resolvedParams[] = $this->resolvedDependencies[$dependencyInterface->getName()];
+            } else {
+                $dependencyClass = $this->dependencies[$dependencyInterface->getName()];
+                $dependencyInstance = $this->resolve($dependencyClass);
+                $resolvedParams[] = $dependencyInstance;
+            }
         }
 
         $obj = $classInfo->newInstanceArgs($resolvedParams);
 
-       $this->resolvedDependencies[$className] = $obj;
+        $this->resolvedDependencies[$className] = $obj;
 
-       return $obj;
+        return $obj;
     }
 
     private function bindData(array $data, $object)

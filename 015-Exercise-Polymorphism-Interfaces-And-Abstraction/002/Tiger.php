@@ -25,7 +25,7 @@ class Tiger extends Felime
         $class = new ReflectionClass($this);
         $className = $class->getName();
 
-        if ("Meat" !== $foodClassName){
+        if ("Meat" !== $foodClassName) {
             throw new Exception($className . "s are not eating that type of food!");
         }
         $this->setFoodEaten($food->getQuantity());

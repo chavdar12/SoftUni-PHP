@@ -39,27 +39,11 @@ abstract class Animal
     }
 
     /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
      * @param string $name
      */
     private function setName(string $name): void
     {
         $this->name = $name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getType(): string
-    {
-        return $this->type;
     }
 
     /**
@@ -71,19 +55,35 @@ abstract class Animal
     }
 
     /**
-     * @return float
-     */
-    public function getWeigth(): float
-    {
-        return $this->weigth;
-    }
-
-    /**
      * @param float $weigth
      */
     private function setWeigth(float $weigth): void
     {
         $this->weigth = $weigth;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return float
+     */
+    public function getWeigth(): float
+    {
+        return $this->weigth;
     }
 
     /**
@@ -103,6 +103,7 @@ abstract class Animal
     }
 
     public abstract function makeSound(): void;
+
     public abstract function eat(Food $food): void;
 
 }

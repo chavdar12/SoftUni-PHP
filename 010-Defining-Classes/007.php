@@ -1,19 +1,13 @@
 <?php
 
-class Person{
-    /**
-     * @var string
-     */
-    public $name;
+class Person
+{
+    public string $name;
 
-    /**
-     * Person constructor.
-     * @param string $name
-     */
     public function __construct(string $name)
     {
         $this->name = $name;
-        echo $this->name . ' says "Hello"!';
+        echo "{$this->name} says \"Hello\"!";
     }
 }
 

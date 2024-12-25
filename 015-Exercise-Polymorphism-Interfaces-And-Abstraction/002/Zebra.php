@@ -25,7 +25,7 @@ class Zebra extends Mammal
         $class = new ReflectionClass($this);
         $className = $class->getName();
 
-        if ("Vegetable" !== $foodClassName){
+        if ("Vegetable" !== $foodClassName) {
             throw new Exception($className . "s are not eating that type of food!");
         }
         $this->setFoodEaten($food->getQuantity());

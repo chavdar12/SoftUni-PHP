@@ -9,28 +9,27 @@ use Core\TemplateInterface;
 abstract class UserHttpHandlerAbstract
 {
     /**
+     * @var DataBinderInterface
+     */
+    protected $dataBinder;
+    /**
      * @var TemplateInterface
      */
     private $template;
 
-    /**
-     * @var DataBinderInterface
-     */
-    protected $dataBinder;
-
-    public function __construct(TemplateInterface $template,
-        DataBinderInterface $dataBinder)
+    public function __construct(TemplateInterface   $template,
+                                DataBinderInterface $dataBinder)
     {
         $this->template = $template;
         $this->dataBinder = $dataBinder;
     }
 
-    public function render(string $templateName, $data = null, $error = null) : void
+    public function render(string $templateName, $data = null, $error = null): void
     {
         $this->template->render($templateName, $data, $error);
     }
 
-    public function redirect(string $url) : void
+    public function redirect(string $url): void
     {
         header("Location: $url");
     }

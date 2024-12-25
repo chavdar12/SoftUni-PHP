@@ -1,12 +1,12 @@
 <h2>Login Form</h2>
 
-<?php /** @var \App\Data\ErrorDTO $error  */ ?>
+<?php /** @var \App\Data\ErrorDTO $error */ ?>
 <?php /** @var \App\Data\UserDTO $data */ ?>
 
 
-<?php if($error): ?>
-<span style="color: red"><?= $error->getMessage(); ?></span>
-<br /><br />
+<?php if ($error): ?>
+    <span style="color: red"><?= $error->getMessage(); ?></span>
+    <br/><br/>
 <?php endif; ?>
 
 <form method="post">
@@ -14,7 +14,7 @@
         Username: <input type="text" name="username" value="<?= $data === null ? null : $data->getUsername() ?>"/> <br/>
     </label>
     <label>
-        Password: <input type="text" name="password" value="" /> <br/>
+        Password: <input type="text" name="password" value=""/> <br/>
     </label>
     <label>
         <input type="submit" name="login" value="Login"/>

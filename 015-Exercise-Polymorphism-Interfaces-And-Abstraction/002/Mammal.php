@@ -23,14 +23,6 @@ abstract class Mammal extends Animal
     }
 
     /**
-     * @return string
-     */
-    public function getLivingRegion(): string
-    {
-        return $this->livingRegion;
-    }
-
-    /**
      * @param string $livingRegion
      */
     private function setLivingRegion(string $livingRegion): void
@@ -38,10 +30,17 @@ abstract class Mammal extends Animal
         $this->livingRegion = $livingRegion;
     }
 
-
     public function __toString(): string
     {
-        return sprintf("%s[%s, %s, %s, %d]",$this->getType(), $this->getName(), $this->getWeigth(), $this->getLivingRegion(),$this->getFoodEaten());
+        return sprintf("%s[%s, %s, %s, %d]", $this->getType(), $this->getName(), $this->getWeigth(), $this->getLivingRegion(), $this->getFoodEaten());
+    }
+
+    /**
+     * @return string
+     */
+    public function getLivingRegion(): string
+    {
+        return $this->livingRegion;
     }
 
 }

@@ -17,22 +17,6 @@ class UserRegisterBindingModel
     }
 
     /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConfirmPassword()
-    {
-        return $this->confirmPassword;
-    }
-
-    /**
      * @param mixed $username
      */
     public function setUsername($username): void
@@ -41,11 +25,27 @@ class UserRegisterBindingModel
     }
 
     /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
      * @param mixed $password
      */
     public function setPassword($password): void
     {
         $this->password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConfirmPassword()
+    {
+        return $this->confirmPassword;
     }
 
     /**

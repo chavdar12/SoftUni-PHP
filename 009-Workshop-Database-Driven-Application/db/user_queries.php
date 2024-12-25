@@ -44,7 +44,9 @@ function getRolesByUserId(PDO $db, int $userId): array
     $stmt = $db->prepare($query);
     $stmt->execute([$userId]);
 
-    return array_map(function($r) { return $r['name'];}, $stmt->fetchAll(PDO::FETCH_ASSOC));
+    return array_map(function ($r) {
+        return $r['name'];
+    }, $stmt->fetchAll(PDO::FETCH_ASSOC));
 }
 
 function getUserByAuthId(PDO $db, string $authId): int

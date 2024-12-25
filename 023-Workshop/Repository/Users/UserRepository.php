@@ -4,13 +4,13 @@
 namespace Repository\Users;
 
 
-use DTO\UserDTO;
 use Database\DatabaseInterface;
 use DTO\RequestModels\UserRegisterBindingModel;
+use DTO\UserDTO;
 
 class UserRepository implements UserRepositoryInterface
 {
-    /**@var DatabaseInterface*/
+    /**@var DatabaseInterface */
     private $db;
 
     public function __construct(DatabaseInterface $db)

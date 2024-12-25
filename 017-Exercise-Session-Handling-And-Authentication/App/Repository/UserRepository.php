@@ -1,7 +1,7 @@
 <?php
 
-use \Database\DatabaseInterface;
-use \App\Data\UserDTO;
+use App\Data\UserDTO;
+use Database\DatabaseInterface;
 
 class UserRepository implements UserRepositoryInterfacepublic
 {
@@ -26,11 +26,11 @@ class UserRepository implements UserRepositoryInterfacepublic
             INSERT INTO users(username, password)
              VALUES(?, ?)
             ")->execute([
-                $userDTO->getUsername(),
-                $userDTO->getPassword()
-            ]);
+            $userDTO->getUsername(),
+            $userDTO->getPassword()
+        ]);
 
-            return true;
+        return true;
     }
 
     public function fundByUsername(string $username): UserDTO

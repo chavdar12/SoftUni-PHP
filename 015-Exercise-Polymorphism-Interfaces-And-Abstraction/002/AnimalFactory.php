@@ -11,14 +11,14 @@ class AnimalFactory implements AnimalFactoryInterface
         $weight = floatval($data[2]);
         $livingRegion = $data[3];
 
-        switch ($type){
+        switch ($type) {
             case "Cat":
-            $breed = $data[4];
-            return new Cat($name, $type, $weight, $livingRegion, $breed);
+                $breed = $data[4];
+                return new Cat($name, $type, $weight, $livingRegion, $breed);
             case "Zebra":
             case "Mouse":
             case "Tiger":
-            return new $type($name, $type, $weight, $livingRegion);
+                return new $type($name, $type, $weight, $livingRegion);
             default:
                 return null;
         }

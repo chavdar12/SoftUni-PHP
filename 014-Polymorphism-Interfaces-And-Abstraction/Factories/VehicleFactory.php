@@ -19,7 +19,7 @@ class VehicleFactory implements VehicleFactoryInterface
     public function create(string $type, float $qty, float $consumption, float $tankCap): VehicleInterface
     {
         $className = 'Vehicles\\' . $type;
-        if (!class_exists($className)){
+        if (!class_exists($className)) {
             throw new \Exception("Invalid vehicle type");
         }
         return $vehicle = new $className($qty, $consumption, $tankCap);

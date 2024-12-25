@@ -4,22 +4,22 @@
 
 <form method="post">
     <label>
-        Username: <input type="text" name="username" value="<?= $data->getUsername(); ?>"    /> <br/>
+        Username: <input type="text" name="username" value="<?= $data->getUsername(); ?>"/> <br/>
     </label>
     <label>
-        Password: <input type="text" name="password" /> <br/>
+        Password: <input type="text" name="password"/> <br/>
     </label>
     <label>
         Confirm Password: <input type="text" name="confirm_password"/> <br/>
     </label>
     <label>
-        First Name: <input type="text" name="first_name" value="<?= $data->getFirstName(); ?>"  /><br/>
+        First Name: <input type="text" name="first_name" value="<?= $data->getFirstName(); ?>"/><br/>
     </label>
     <label>
-        Last Name: <input type="text" name="last_name" value="<?= $data->getLastName(); ?>"  /><br/>
+        Last Name: <input type="text" name="last_name" value="<?= $data->getLastName(); ?>"/><br/>
     </label>
     <label>
-        Birthday: <input type="text" name="born_on" value="<?= $data->getBornOn(); ?>"  /><br/>
+        Birthday: <input type="text" name="born_on" value="<?= $data->getBornOn(); ?>"/><br/>
     </label>
     <input type="submit" name="edit" value="Edit"/> <br/>
 

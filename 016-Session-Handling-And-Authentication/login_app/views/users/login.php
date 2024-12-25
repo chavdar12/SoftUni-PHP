@@ -7,7 +7,7 @@
 <body>
 <h1>Login form</h1>
 <div id="error" style="color:red">
-    <h1><?=$error;?></h1>
+    <h1><?= $error; ?></h1>
 </div>
 <form method="post">
     Username: <input type="text" name="username"><br/>

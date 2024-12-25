@@ -26,8 +26,8 @@ class Router implements RouterInterface
     {
 
         foreach ($this->routes[$requestMethod] as $route => $handler) {
-            $res = preg_match_all('/^' . $route . '$/', $uri,$matches);
-            if (!$res){
+            $res = preg_match_all('/^' . $route . '$/', $uri, $matches);
+            if (!$res) {
                 continue;
             }
 

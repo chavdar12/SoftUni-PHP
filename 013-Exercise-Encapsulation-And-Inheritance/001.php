@@ -32,6 +32,26 @@ class Box
     }
 
     /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return "Surface Area - " . number_format($this->getSurfaceArea(), 2, '.', '') . PHP_EOL .
+            "Lateral Surface Area - " . number_format($this->getLateralSurfaceArea(), 2, '.', '') . PHP_EOL .
+            "Volume - " . number_format($this->getVolume(), 2, '.', '') . PHP_EOL;
+    }
+
+    /**
+     * @return float
+     */
+    private function getSurfaceArea(): float
+    {
+        return 2 * ($this->getLength() * $this->getWidth())
+            + 2 * ($this->getLength() * $this->getHeight())
+            + 2 * ($this->getWidth() * $this->getHeight());
+    }
+
+    /**
      * @return float
      */
     public function getLength(): float
@@ -88,14 +108,6 @@ class Box
     /**
      * @return float
      */
-    private function getVolume(): float
-    {
-        return $this->getLength() * $this->getWidth() * $this->getHeight();
-    }
-
-    /**
-     * @return float
-     */
     private function getLateralSurfaceArea(): float
     {
         return 2 * ($this->getLength() * $this->getHeight())
@@ -105,21 +117,9 @@ class Box
     /**
      * @return float
      */
-    private function getSurfaceArea(): float
+    private function getVolume(): float
     {
-        return 2 * ($this->getLength() * $this->getWidth())
-            + 2 * ($this->getLength() * $this->getHeight())
-            + 2 * ($this->getWidth() * $this->getHeight());
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return "Surface Area - " . number_format($this->getSurfaceArea(), 2, '.', '').PHP_EOL .
-        "Lateral Surface Area - " . number_format($this->getLateralSurfaceArea(), 2, '.', '').PHP_EOL .
-        "Volume - " . number_format($this->getVolume(), 2, '.', '').PHP_EOL;
+        return $this->getLength() * $this->getWidth() * $this->getHeight();
     }
 
     /**
@@ -129,7 +129,7 @@ class Box
      */
     private function validateInput(float $value, string $parameter): void
     {
-        if ($value <= 0){
+        if ($value <= 0) {
             throw new Exception("{$parameter} cannot be zero or negative !\n");
         }
     }
@@ -137,9 +137,9 @@ class Box
 
 // MAIN
 
-$l=floatval(readline());
-$w=floatval(readline());
-$h=floatval(readline());
+$l = floatval(readline());
+$w = floatval(readline());
+$h = floatval(readline());
 
 try {
     $box = new Box($l, $w, $h);

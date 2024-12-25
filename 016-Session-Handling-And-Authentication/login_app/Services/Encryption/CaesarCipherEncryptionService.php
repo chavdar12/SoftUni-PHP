@@ -14,12 +14,12 @@ class CaesarCipherEncryptionService implements EncryptionServiceInterface
 
     public function hash(string $password): string
     {
-       $newPassword = '';
-       for ($i = 0; $i < mb_strlen($password); $i++) {
-           $newPassword .= chr(ord($password[$i]) + 2);
-       }
+        $newPassword = '';
+        for ($i = 0; $i < mb_strlen($password); $i++) {
+            $newPassword .= chr(ord($password[$i]) + 2);
+        }
 
-       return $newPassword;
+        return $newPassword;
     }
 
     public function verify(string $password, string $hash): bool

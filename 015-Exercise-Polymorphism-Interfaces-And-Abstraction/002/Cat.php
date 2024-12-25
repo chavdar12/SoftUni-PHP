@@ -8,12 +8,10 @@ class Cat extends Felime
      */
     private $breed;
 
-    /**
-     * @return string
-     */
-    public function getBreed(): string
+    public function __construct(string $name, string $type, float $weigth, string $livingRegion, string $breed)
     {
-        return $this->breed;
+        $this->setBreed($breed);
+        parent::__construct($name, $type, $weigth, $livingRegion);
     }
 
     /**
@@ -24,12 +22,6 @@ class Cat extends Felime
         $this->breed = $breed;
     }
 
-    public function __construct(string $name, string $type, float $weigth, string $livingRegion, string $breed)
-    {
-        $this->setBreed($breed);
-        parent::__construct($name, $type, $weigth, $livingRegion);
-    }
-
     public function makeSound(): void
     {
         echo "Meowwww\n";
@@ -37,7 +29,15 @@ class Cat extends Felime
 
     public function __toString(): string
     {
-        return sprintf("%s[%s, %s, %s, %s, %d]",$this->getType(), $this->getName(),$this->getBreed(), $this->getWeigth(), $this->getLivingRegion(),$this->getFoodEaten());
+        return sprintf("%s[%s, %s, %s, %s, %d]", $this->getType(), $this->getName(), $this->getBreed(), $this->getWeigth(), $this->getLivingRegion(), $this->getFoodEaten());
+    }
+
+    /**
+     * @return string
+     */
+    public function getBreed(): string
+    {
+        return $this->breed;
     }
 
     /**

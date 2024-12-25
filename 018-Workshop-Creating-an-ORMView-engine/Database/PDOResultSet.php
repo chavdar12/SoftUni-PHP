@@ -15,9 +15,9 @@ class PDOResultSet implements ResultSetInterface
         $this->pdoStatement = $PDOStatement;
     }
 
-    public function fetch($className) : \Generator
+    public function fetch($className): \Generator
     {
-        while ($row = $this->pdoStatement->fetchObject($className)){
+        while ($row = $this->pdoStatement->fetchObject($className)) {
             yield $row;
         }
     }

@@ -7,7 +7,7 @@
 <body>
 <?php include_once 'logged_in_header.php'; ?>
 
-<a href="<?=url("categories.php");?>">Back categories</a>
+<a href="<?= url("categories.php"); ?>">Back categories</a>
 
 <form method="post">
     Name <input type="text" name="name"/><br/>

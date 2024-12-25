@@ -39,10 +39,10 @@ class Human
     protected function setFirstName(string $firstName): void
     {
         if (preg_match("/^[A-Z]+$/", $firstName[0])) {
-            if (strlen($firstName) < 4){
+            if (strlen($firstName) < 4) {
                 throw new Exception("Expected length at least 4 symbols!Argument: firstName");
             }
-        }else{
+        } else {
             throw new Exception("Expected upper case letter!Argument: firstName");
         }
         $this->firstName = $firstName;
@@ -63,15 +63,16 @@ class Human
     protected function setLastName(string $lastName): void
     {
         if (preg_match("/^[A-Z]+$/", $lastName[0])) {
-            if (strlen($lastName) < 3){
+            if (strlen($lastName) < 3) {
                 throw new Exception("Expected length at least 3 symbols!Argument: lastName");
             }
-        }else{
+        } else {
             throw new Exception("Expected upper case letter!Argument: lastName");
         }
         $this->lastName = $lastName;
     }
 }
+
 class Student extends Human
 {
     /**
@@ -93,22 +94,14 @@ class Student extends Human
     }
 
     /**
-     * @return string
-     */
-    public function getFacultyNumber(): string
-    {
-        return $this->facultyNumber;
-    }
-
-    /**
      * @param string $facultyNumber
      * @throws Exception
      */
     private function setFacultyNumber(string $facultyNumber): void
     {
-        if (strlen($facultyNumber) >=5 && strlen($facultyNumber) <= 10) {
+        if (strlen($facultyNumber) >= 5 && strlen($facultyNumber) <= 10) {
             $this->facultyNumber = $facultyNumber;
-        }else{
+        } else {
             throw new Exception("Invalid faculty number!");
         }
     }
@@ -120,7 +113,16 @@ class Student extends Human
     {
         return "First Name: {$this->getFirstName()}\nLast Name: {$this->getLastName()}\nFaculty number: {$this->getFacultyNumber()}\n";
     }
+
+    /**
+     * @return string
+     */
+    public function getFacultyNumber(): string
+    {
+        return $this->facultyNumber;
+    }
 }
+
 class Worker extends Human
 {
     /**
@@ -148,14 +150,6 @@ class Worker extends Human
     }
 
     /**
-     * @return float
-     */
-    public function getWhpd(): float
-    {
-        return number_format(($this->whpd), 2,'.','');
-    }
-
-    /**
      * @param float $whpd
      * @throws Exception
      */
@@ -163,30 +157,9 @@ class Worker extends Human
     {
         if ($whpd >= 1 && $whpd <= 12) {
             $this->whpd = $whpd;
-        }else {
+        } else {
             throw new Exception("Expected value mismatch!Argument: workHoursPerDay");
         }
-    }
-
-    /**
-     * @param string $lastName
-     * @throws Exception
-     */
-    protected function setLastName(string $lastName): void
-    {
-        if (strlen($lastName) > 3) {
-            $this->lastName = $lastName;
-        }else{
-            throw new Exception("Expected length more than 3 symbols!Argument:lastName");
-        }
-    }
-
-    /**
-     * @return float
-     */
-    public function getWeekSalary(): float
-    {
-        return number_format(($this->weekSalary), 2,'.','');
     }
 
     /**
@@ -197,9 +170,33 @@ class Worker extends Human
     {
         if ($weekSalary > 10) {
             $this->weekSalary = $weekSalary;
-        }else{
+        } else {
             throw new Exception("Expected value mismatch!Argument: weekSalary");
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return "First Name: {$this->getFirstName()}\nLast Name: {$this->getLastName()}\nWeek Salary: {$this->getWeekSalary()}\nHours per day: {$this->getWhpd()}\nSalary per hour: {$this->getSalaryHour()}\n";
+    }
+
+    /**
+     * @return float
+     */
+    public function getWeekSalary(): float
+    {
+        return number_format(($this->weekSalary), 2, '.', '');
+    }
+
+    /**
+     * @return float
+     */
+    public function getWhpd(): float
+    {
+        return number_format(($this->whpd), 2, '.', '');
     }
 
     /**
@@ -211,13 +208,19 @@ class Worker extends Human
     }
 
     /**
-     * @return string
+     * @param string $lastName
+     * @throws Exception
      */
-    public function __toString(): string
+    protected function setLastName(string $lastName): void
     {
-        return "First Name: {$this->getFirstName()}\nLast Name: {$this->getLastName()}\nWeek Salary: {$this->getWeekSalary()}\nHours per day: {$this->getWhpd()}\nSalary per hour: {$this->getSalaryHour()}\n";
+        if (strlen($lastName) > 3) {
+            $this->lastName = $lastName;
+        } else {
+            throw new Exception("Expected length more than 3 symbols!Argument:lastName");
+        }
     }
 }
+
 //MAIN
 $st = explode(" ", readline());
 $wr = explode(" ", readline());
@@ -229,6 +232,6 @@ try {
     echo PHP_EOL;
     echo $worker;
     echo PHP_EOL;
-}catch (Exception $e){
-    echo $e->getMessage(). PHP_EOL;
+} catch (Exception $e) {
+    echo $e->getMessage() . PHP_EOL;
 }

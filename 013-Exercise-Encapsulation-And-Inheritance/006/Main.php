@@ -17,24 +17,11 @@ class Main
         $this->readData();
     }
 
-    /**
-     * @param string $name
-     * @return Cat
-     * @throws Exception
-     */
-    private function findCatByName(string $name) : Cat
-    {
-        if (array_key_exists($name, $this->cats)){
-            return $this->cats[$name];
-        }
-        throw new Exception("Cat not found!");
-    }
-
     private function readData()
     {
         $input = readline();
 
-        while($input !== self::INPUT_END) {
+        while ($input !== self::INPUT_END) {
             $data = preg_split(self::PATTERN, $input, -1, PREG_SPLIT_NO_EMPTY);
 
 
@@ -45,7 +32,7 @@ class Main
             $cat = null;
             try {
                 $this->cats[$name] = CatFactory::create($breed, $name, $param);
-            }catch (Exception $e){
+            } catch (Exception $e) {
                 echo $e->getMessage();
             }
 
@@ -55,9 +42,22 @@ class Main
         $searchingCatName = readline();
         try {
             echo $this->findCatByName($searchingCatName);
-        }catch (Exception $e){
+        } catch (Exception $e) {
             echo $e->getMessage();
         }
+    }
+
+    /**
+     * @param string $name
+     * @return Cat
+     * @throws Exception
+     */
+    private function findCatByName(string $name): Cat
+    {
+        if (array_key_exists($name, $this->cats)) {
+            return $this->cats[$name];
+        }
+        throw new Exception("Cat not found!");
     }
 }
 

@@ -20,14 +20,6 @@ class Siamese extends Cat
     }
 
     /**
-     * @return int
-     */
-    public function getEarSize(): int
-    {
-        return $this->earSize;
-    }
-
-    /**
      * @param int $earSize
      */
     private function setEarSize(int $earSize): void
@@ -37,6 +29,14 @@ class Siamese extends Cat
 
     public function __toString(): string
     {
-        return parent::__toString(). " " . $this->getEarSize() . PHP_EOL;
+        return parent::__toString() . " " . $this->getEarSize() . PHP_EOL;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEarSize(): int
+    {
+        return $this->earSize;
     }
 }

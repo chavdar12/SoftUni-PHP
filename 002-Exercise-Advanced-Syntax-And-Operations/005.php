@@ -4,21 +4,12 @@ $numbers = explode(" ", readline());
 $maxCount = 0;
 $number = "";
 
-for ($row = 0; $row < count($numbers); $row++){
-    $currentCount = 0;
-    for ($col = $row ; $col < count($numbers); $col++){
-        if ($numbers[$row] == $numbers[$col]){
-            $currentCount++;
-            if ($currentCount > $maxCount){
-                $maxCount = $currentCount;
-                $number = $numbers[$row];
-            }
-        }else{
-            break;
-        }
+foreach ($numbers as $current) {
+    $currentCount = count(array_keys($numbers, $current));
+    if ($currentCount > $maxCount) {
+        $maxCount = $currentCount;
+        $number = $current;
     }
 }
 
-for ($i = 0; $i<$maxCount; $i++){
-    echo $number . " ";
-}
+echo str_repeat($number . " ", $maxCount);

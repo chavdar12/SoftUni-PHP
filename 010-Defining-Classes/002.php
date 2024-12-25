@@ -1,12 +1,12 @@
 <form method="post">
-    Username: <input type="text" name="username"/><br>
-    Password: <input type="password" name="password"/><br>
+    <label for="username">Username: </label><input type="text" name="username" id="username"/><br>
+    <label for="password">Password: </label><input type="password" name="password" id="password"/><br>
     <input type="submit" name="register" value="Register"><br>
 </form>
 
 <?php
 
-if (isset($_POST['register'])){
+if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -14,56 +14,39 @@ if (isset($_POST['register'])){
     echo $person;
 }
 
-class Person{
-    private $username;
-    private $password;
+class Person
+{
+    private string $username;
+    private string $password;
 
-    /**
-     * Person constructor.
-     * @param $username
-     * @param $password
-     */
-    public function __construct(string $username,string $password)
+    public function __construct(string $username, string $password)
     {
         $this->setUsername($username);
         $this->setPassword($password);
     }
 
-    /**
-     * @return string
-     */
+    public function __toString(): string
+    {
+        return $this->getUsername() . "<br />" . $this->getPassword();
+    }
+
     public function getUsername(): string
     {
         return $this->username;
     }
 
-    /**
-     * @param string $username
-     */
     public function setUsername(string $username): void
     {
         $this->username = $username;
     }
 
-    /**
-     * @return string
-     */
     public function getPassword(): string
     {
         return $this->password;
     }
 
-    /**
-     * @param string $password
-     */
     public function setPassword(string $password): void
     {
         $this->password = $password;
     }
-
-    public function __toString()
-    {
-        return $this->getUsername() . "<br />" . $this->getPassword();
-    }
-
 }

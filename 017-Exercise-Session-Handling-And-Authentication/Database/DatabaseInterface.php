@@ -4,8 +4,6 @@
 namespace Database;
 
 
-use Cassandra\Statement;
-
 interface DatabaseInterface
 {
     /**

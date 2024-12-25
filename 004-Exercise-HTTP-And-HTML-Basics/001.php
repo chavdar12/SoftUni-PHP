@@ -1,11 +1,26 @@
-<form>
-    Name: <input type="text" name="person">
-    <input type="submit">
-</form>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Greeting Form</title>
+</head>
+<body>
+<main>
+    <h1>Enter Your Name</h1>
+    <form method="get">
+        <label for="person">Name:</label>
+        <input type="text" name="person" id="person" required>
+        <button type="submit">Submit</button>
+    </form>
 
-<?php
-
-if (isset($_GET['person'])) {
-    $name = htmlspecialchars($_GET['person']);
-    echo "Hello, $name!";
-}
+    <?php
+    if (isset($_GET['person'])) {
+        $name = htmlspecialchars($_GET['person']);
+        echo "<p>Hello, $name!</p>";
+    }
+    ?>
+</main>
+</body>
+</html>

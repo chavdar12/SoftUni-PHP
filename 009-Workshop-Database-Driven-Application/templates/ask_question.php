@@ -7,7 +7,7 @@
 <body>
 <?php include_once 'logged_in_header.php'; ?>
 
-<a href="<?=url("category.php?id={$_GET['category_id']}");?>">Back to questions in this category</a>
+<a href="<?= url("category.php?id={$_GET['category_id']}"); ?>">Back to questions in this category</a>
 
 <form method="post">
     Title <input type="text" name="title"/><br/>
@@ -16,14 +16,16 @@
     Category:
     <select name="category">
         <?php foreach ($categories as $category): ?>
-            <option <?=$category['id'] == $categoryId ? 'selected' : '';?> value="<?=$category['id'];?>"><?=$category['name'];?> (<?=$category['questions_count'];?>)</option>
+            <option <?= $category['id'] == $categoryId ? 'selected' : ''; ?>
+                    value="<?= $category['id']; ?>"><?= $category['name']; ?> (<?= $category['questions_count']; ?>)
+            </option>
         <?php endforeach; ?>
     </select>
     <br/><br/>
     Tags:<br/>
     <select multiple="multiple" name="existing_tags[]">
         <?php foreach ($tags as $tag): ?>
-            <option value="<?=$tag['id'];?>"><?=$tag['name'];?> (<?=$tag['questions_count'];?>)</option>
+            <option value="<?= $tag['id']; ?>"><?= $tag['name']; ?> (<?= $tag['questions_count']; ?>)</option>
         <?php endforeach; ?>
     </select>
     <br/>

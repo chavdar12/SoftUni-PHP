@@ -11,8 +11,8 @@
 Or go to <a href="login.php">login</a>, if you have an account
 <br/>
 <form method="post">
-    Username:<input type="text" value="<?=$username;?>" name="username"/><br/>
-    Pass: <input type="<?= !empty($password) ? 'text' : 'password';?>" value="<?=$password; ?>" name="password"/><br/>
+    Username:<input type="text" value="<?= $username; ?>" name="username"/><br/>
+    Pass: <input type="<?= !empty($password) ? 'text' : 'password'; ?>" value="<?= $password; ?>" name="password"/><br/>
     <input type="submit"/>
 </form>
 <div id="response">

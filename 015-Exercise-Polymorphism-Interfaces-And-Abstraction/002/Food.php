@@ -11,18 +11,18 @@ abstract class Food
     }
 
     /**
-     * @return mixed
-     */
-    public function getQuantity()
-    {
-        return $this->quantity;
-    }
-
-    /**
      * @param mixed $quantity
      */
     private function setQuantity($quantity): void
     {
         $this->quantity = $quantity;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
     }
 }

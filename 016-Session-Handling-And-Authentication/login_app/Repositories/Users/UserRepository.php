@@ -1,4 +1,5 @@
 <?php
+
 namespace Repositories\Users;
 
 use Data\Users\UserDTO;

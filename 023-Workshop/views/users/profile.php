@@ -1,4 +1,4 @@
-<?php /** @var $model \DTO\ViewModels\UserProfileViewModel */?>
+<?php /** @var $model \DTO\ViewModels\UserProfileViewModel */ ?>
 
 <!DOCTYPE html>
 <html lang="en">
